@@ -8,7 +8,14 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to '/'
+    else
+      render :new
+    end
+  end
 
   private
 
@@ -16,6 +23,10 @@ class ItemsController < ApplicationController
     unless current_user
       redirect_to '/users/sign_in'
     end
+  end
+
+  def item_params
+    params.require(:item).permit(:image,:name,:explanation,:price,:category_id,:status_id,:delivery_fee_id,:delivery_day_id,:shipping_origin_id).merge(user_id: current_user.id)
   end
 
 end
