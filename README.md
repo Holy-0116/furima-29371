@@ -39,17 +39,17 @@
 
 ## Items  テーブル
 
-| Column          | Type       | Options                         |
-| --------------- | ---------- | ------------------------------- |
-| user            | references | null: false, foreign_key: true  |
-| name            | string     | null: false                     |
-| explanation     | text       | null: false                     |
-| price           | integer    | null: false                     |
-| category        | integer    | null: false, foreign_key: true  |
-| status          | integer    | null: false, foreign_key: true  |
-| delivery_fee    | integer    | null: false                     |
-| delivery_day    | integer    | null: false                     |
-| shipping_origin | integer    | null: false, foreign_key: true  |
+| Column            | Type       | Options                         |
+| ----------------- | ---------- | ------------------------------- |
+| user              | references | null: false, foreign_key: true  |
+| name              | string     | null: false                     |
+| explanation       | text       | null: false                     |
+| price             | integer    | null: false                     |
+| category_id       | integer    | null: false, foreign_key: true  |
+| status_id         | integer    | null: false, foreign_key: true  |
+| delivery_fee_id   | integer    | null: false                     |
+| delivery_day_id   | integer    | null: false                     |
+| shipping_origin_id| integer    | null: false, foreign_key: true  |
 
 ### Association
 
