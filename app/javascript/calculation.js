@@ -5,7 +5,7 @@ function calculationProfit(){
 
   priceForm.addEventListener("change",() =>{
     let price = priceForm.value
-    tax.innerHTML = Math.round(price * 0.1)
+    tax.innerHTML = Math.round(price * 0.1);
     profit.innerHTML = price - tax.innerHTML  
   });
 }
