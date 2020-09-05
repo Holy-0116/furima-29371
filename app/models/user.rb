@@ -16,4 +16,7 @@ class User < ApplicationRecord
     validates :birthday, presence: { message: "can't be blank" }
   end
     validates :password, format: { with: PASSWORD_REGEX, message:"is invalid.Include both letters and numbers"}
+  
+    has_many :items
+
 end
