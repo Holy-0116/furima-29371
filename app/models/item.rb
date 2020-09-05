@@ -12,14 +12,13 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :image
     validates :user
-    validates :name,length: {maximum: 40}
-    validates :explanation, presence: { message:"can't be blank" }
-    validates :price, numericality:{greater_than: 300, less_than: 9999999}
-    validates :category_id, numericality: { other_than: 1, message:"Select"}
-    validates :status_id, numericality: { other_than: 1, message: "Select"}
-    validates :delivery_fee_id, numericality: { other_than: 1, message: "Select"}
-    validates :delivery_day_id, numericality: { other_than: 1, message: "Select"}
-    validates :shipping_origin_id, numericality: { other_than: 1, message:"Select"}
+    validates :name, length: { maximum: 40 }
+    validates :explanation, presence: { message: "can't be blank" }
+    validates :price, numericality: { greater_than: 300, less_than: 9_999_999 }
+    validates :category_id, numericality: { other_than: 1, message: 'Select' }
+    validates :status_id, numericality: { other_than: 1, message: 'Select' }
+    validates :delivery_fee_id, numericality: { other_than: 1, message: 'Select' }
+    validates :delivery_day_id, numericality: { other_than: 1, message: 'Select' }
+    validates :shipping_origin_id, numericality: { other_than: 1, message: 'Select' }
   end
-    
 end
