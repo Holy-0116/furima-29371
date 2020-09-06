@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :get_root, only: [:new]
   def index
+    @items = Item.all.order(created_at: "DESC" ) 
   end
 
   def new
