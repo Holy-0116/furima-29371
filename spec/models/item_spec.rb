@@ -35,9 +35,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Status Select')
       end
       it '発送元の地域の情報がないと出品できない' do
-        @item.shipping_origin_id = 1
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping origin Select')
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it '発送までの日数についての情報がないと出品できない' do
         @item.delivery_fee_id = 1

@@ -49,7 +49,7 @@
 | status_id         | integer    | null: false, foreign_key: true  |
 | delivery_fee_id   | integer    | null: false                     |
 | delivery_day_id   | integer    | null: false                     |
-| shipping_origin_id| integer    | null: false, foreign_key: true  |
+| prefecture_id     | integer    | null: false, foreign_key: true  |
 
 ### Association
 
