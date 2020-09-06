@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :get_root, only: [:new]
+  before_action :set_item, only: [:show]
   def index
     @items = Item.all.order(created_at: 'DESC')
   end
@@ -18,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by(id: params[:id])
+    
   end
 
   private
@@ -28,6 +29,10 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image, :name, :explanation, :price, :category_id, :status_id, :delivery_fee_id, :delivery_day_id, :shipping_origin_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :explanation, :price, :category_id, :status_id, :delivery_fee_id, :delivery_day_id, :prefecture_id).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find_by(id: params[:id])
   end
 end
