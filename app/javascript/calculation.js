@@ -1,3 +1,5 @@
+window.addEventListener("load",calculationProfit);
+
 function calculationProfit(){
   const priceForm = document.getElementById("item-price");
   const tax = document.getElementById("add-tax-price");
@@ -9,4 +11,3 @@ function calculationProfit(){
     profit.innerHTML = price - tax.innerHTML  
   });
 }
-window.addEventListener("load",calculationProfit);
