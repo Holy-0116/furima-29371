@@ -8,6 +8,6 @@ FactoryBot.define do
     status_id          { '2' }
     delivery_fee_id    { '2' }
     delivery_day_id    { '2' }
-    shipping_origin_id { '2' }
+    prefecture_id      { '2' }
   end
 end
