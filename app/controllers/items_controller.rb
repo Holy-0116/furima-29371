@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :get_root, only: [:new]
+  before_action :get_root, only: [:new, :edit]
   before_action :set_item, only: [:show, :edit, :update]
   def index
     @items = Item.all.order(created_at: 'DESC')
