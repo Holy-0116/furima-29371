@@ -19,11 +19,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    
   end
 
   def update
@@ -31,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render edit_item_path(@item)
+      render :edit
     end
   end
 
@@ -48,5 +46,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find_by(id: params[:id])
   end
-
 end
