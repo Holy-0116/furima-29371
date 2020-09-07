@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :get_root, only: [:new, :edit]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_exhibitor, only: [:edit, :update, :destroy]
   def index
     @items = Item.all.order(created_at: 'DESC')
   end
@@ -33,13 +34,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user == current_user
       if @item.destroy
         redirect_to root_path
       else
         render :show
       end
-    end
   end
 
   private
@@ -54,5 +53,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find_by(id: params[:id])
+  end
+
+  def confirm_exhibitor
+    redirect_to root_path unless @item.user == current_user
   end
 end
