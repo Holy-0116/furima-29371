@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = OrderAddress.new(token: order_params[:token], postal_code: order_params[:postal_code], prefecture_id: order_params[:prefecture_id], city: order_params[:city], house_number: order_params[:house_number], building_name: order_params[:building_name], tell: order_params[:tell], item_id: order_params[:item_id], user_id: current_user.id)
+    @order = OrderAddress.new(order_params)
     if @order.valid?
       pay_item
       @order.save
