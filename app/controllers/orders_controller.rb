@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :set_item
   before_action :authenticate_user!, only: [:index]
   before_action :sold_out?, only: [:index, :create]
   def index
     @order = OrderAddress.new
-    @item = Item.find_by(id: params[:item_id])
     redirect_to root_path if current_user == @item.user
   end
 
   def create
-    @item = Item.find_by(id: params[:item_id])
     @order = OrderAddress.new(token: order_params[:token], postal_code: order_params[:postal_code], prefecture_id: order_params[:prefecture_id], city: order_params[:city], house_number: order_params[:house_number], building_name: order_params[:building_name], tell: order_params[:tell], item_id: order_params[:item_id], user_id: current_user.id)
     if @order.valid?
       pay_item
@@ -23,8 +22,11 @@ class OrdersController < ApplicationController
 
   private
 
-  def sold_out?
+  def set_item
     @item = Item.find_by(id: params[:item_id])
+  end
+
+  def sold_out?
     redirect_to '/' if Order.find_by(item_id: @item)
   end
 
