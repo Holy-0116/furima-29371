@@ -47,14 +47,17 @@ RSpec.describe OrderAddress, type: :model do
       it '番地の入力がないと決済できない' do
         @order_address.house_number = ''
         @order_address.valid?
-
         expect(@order_address.errors.full_messages).to include("House number can't be blank")
       end
       it '電話番号の入力がないと決済できない' do
         @order_address.tell = ''
         @order_address.valid?
-
         expect(@order_address.errors.full_messages).to include("Tell can't be blank", 'Tell Invalid.')
+      end
+      it '電話番号にハイフンが入力されていると決済できない' do
+        @order_address.tell = '080-0000-0000'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Tell Invalid.')
       end
     end
   end
