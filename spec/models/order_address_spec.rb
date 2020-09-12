@@ -8,9 +8,9 @@ RSpec.describe OrderAddress, type: :model do
     item.image = fixture_file_upload('public/images/test_image.png')
     item.save
     @order_address = FactoryBot.build(:order_address, item_id: item.id, user_id: buyer.id)
-  sleep 0.1
+    sleep 0.1
   end
-  
+
   describe '決済機能' do
     context '決済がうまくいくとき' do
       it 'すべての値が正しく入力されていれば決済できる' do
@@ -40,21 +40,21 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Prefecture Select')
       end
       it '市区町村の入力がないと決済できない' do
-        @order_address.city = ""
+        @order_address.city = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("City can't be blank")
       end
       it '番地の入力がないと決済できない' do
-        @order_address.house_number = ""
+        @order_address.house_number = ''
         @order_address.valid?
-      
+
         expect(@order_address.errors.full_messages).to include("House number can't be blank")
       end
       it '電話番号の入力がないと決済できない' do
-        @order_address.tell = ""
+        @order_address.tell = ''
         @order_address.valid?
-       
-        expect(@order_address.errors.full_messages).to include("Tell can't be blank", "Tell Invalid.")
+
+        expect(@order_address.errors.full_messages).to include("Tell can't be blank", 'Tell Invalid.')
       end
     end
   end

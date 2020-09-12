@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :sold_out? , only: [:index, :create]
+  before_action :sold_out?, only: [:index, :create]
   def index
     @order = OrderAddress.new
     @item = Item.find_by(id: params[:item_id])
@@ -25,9 +25,7 @@ class OrdersController < ApplicationController
 
   def sold_out?
     @item = Item.find_by(id: params[:item_id])
-   if  Order.find_by(item_id: @item)
-    redirect_to "/"
-   end
+    redirect_to '/' if Order.find_by(item_id: @item)
   end
 
   def order_params
